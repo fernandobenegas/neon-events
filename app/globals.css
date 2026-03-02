@@ -23,4 +23,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #1a001f, #000000 60%);
+  background: radial-gradient(circle at 20% 20%, #1a001a 0%, #000000 60%);
+
 }
+
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 5px #ff00ff,
+      0 0 15px #ff00ff,
+      0 0 30px #00ffff;
+  }
+  50% {
+    box-shadow:
+      0 0 15px #ff00ff,
+      0 0 30px #ff00ff,
+      0 0 50px #00ffff;
+  }
+}
+
+.neon-card {
+  animation: neon-glow 3s infinite;
+  border-radius: 16px;
+}
+
