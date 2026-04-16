@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b0705; /* marrón muy oscuro base */
+  --foreground: #f3e7d3;
 }
 
 @theme inline {
@@ -12,39 +12,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  background: radial-gradient(circle at top, #1a001f, #000000 60%);
-  background: radial-gradient(circle at 20% 20%, #1a001a 0%, #000000 60%);
 
+  /* 🎯 Fondo profesional marrón-negro */
+  background: radial-gradient(
+      circle at top,
+      #2b1d14 0%,
+      #120b08 45%,
+      #050302 100%
+  );
 }
-
-@keyframes neon-glow {
-  0%, 100% {
-    box-shadow:
-      0 0 5px #ff00ff,
-      0 0 15px #ff00ff,
-      0 0 30px #00ffff;
-  }
-  50% {
-    box-shadow:
-      0 0 15px #ff00ff,
-      0 0 30px #ff00ff,
-      0 0 50px #00ffff;
-  }
-}
-
-.neon-card {
-  animation: neon-glow 3s infinite;
-  border-radius: 16px;
-}
-

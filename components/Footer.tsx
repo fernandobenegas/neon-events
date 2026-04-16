@@ -9,12 +9,12 @@ export default function Footer() {
 
         {/* Marca */}
         <div>
-          <h3 className="text-2xl font-bold text-pink-500 drop-shadow-[0_0_10px_#ff00ff] mb-4">
-            Digital Environment
-          </h3>
+          <span className="text-[#c9b6a] font-serif italic underline drop-shadow-[0_0_10px_#ff00ff]">
+  Ella Jura
+</span>
           <p>
-            Cartelería y estructuras de neón personalizadas para eventos
-            sociales y corporativos en Rosario.
+            Ventas y produccion de medialunas y biscochos.
+            
           </p>
         </div>
 
@@ -22,8 +22,8 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Navegación</h4>
           <ul className="space-y-2">
-            <li><a href="#servicios" className="hover:text-pink-400">Servicios</a></li>
-            <li><a href="#galeria" className="hover:text-cyan-400">Galería</a></li>
+            <li><a href="#" className="hover:text-pink-400">Servicios</a></li>
+            <li><a href="#" className="hover:text-cyan-400">Lista de precios</a></li>
             <li><a href="#contacto" className="hover:text-green-400">Contacto</a></li>
           </ul>
         </div>
@@ -32,14 +32,14 @@ export default function Footer() {
         <div>
           <h4 className="text-white font-semibold mb-4">Contacto</h4>
           <p>Rosario, Santa Fe</p>
-          <p>WhatsApp: +54 9 341 216 7147</p>
-          <p>Email:benegasfernando1993@gmail.com</p>
+          <p>WhatsApp: +54 9 341 2167147</p>
+          <p>Email:rociovellejos579@gmail.com</p>
         </div>
 
       </div>
 
       <div className="text-center mt-16 text-sm text-gray-600">
-        © {new Date().getFullYear()} Digital Environment FB. Todos los derechos reservados.
+        © {new Date().getFullYear()} Desarrollado por FB. Todos los derechos reservados.
       </div>
     </footer>
     </SectionWrapper>

@@ -5,43 +5,34 @@ import { Analytics } from "@vercel/analytics/next"
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { Great_Vibes } from "next/font/google";
+
+const greatVibes = Great_Vibes({
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
+
 
 export const metadata = {
-  title: "Ambiente Digital | Cartelería Neón para Eventos",
+  title: "Ella Jura - Medialunas y Bizcochos",
   description:
-    "Cartelería y estructuras de neón personalizadas para eventos sociales y corporativos en Argentina.",
-  keywords: [
-    "carteles neon",
-    "eventos neon",
-    "espejos infinitos",
-    "ambientación eventos",
-    "neon argentina",
-  ],
-  authors: [{ name: "Ambiente Digital" }],
-  creator: "Ambiente Digital",
+    "Produccion y ventas de medialunas y bischochos. Pedí fácil, recibí caliente y disfrutá la tradición que convierte un simple desayuno en un recuerdo inolvidable.",
+ 
+  authors: [{ name: "Ella jura" }],
+  creator: "Ella jura",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
-      <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      {children}
-      <SpeedInsights />
-      <Analytics />
+      <body className="bg-[] text-[#1a150d]">
+        {children}
       </body>
     </html>
   );

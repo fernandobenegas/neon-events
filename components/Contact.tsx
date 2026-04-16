@@ -13,13 +13,9 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
 
-  // 🔥 Auto ocultar mensaje después de 3 segundos
   useEffect(() => {
     if (success) {
-      const timer = setTimeout(() => {
-        setSuccess(null);
-      }, 3000);
-
+      const timer = setTimeout(() => setSuccess(null), 3000);
       return () => clearTimeout(timer);
     }
   }, [success]);
@@ -32,19 +28,17 @@ export default function Contact() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       if (res.ok) {
-        setSuccess("Mensaje enviado correctamente 🚀");
+        setSuccess("Mensaje enviado correctamente ✔");
         setForm({ name: "", email: "", message: "" });
       } else {
         setSuccess("Error al enviar el mensaje");
       }
-    } catch (error) {
+    } catch {
       setSuccess("Error de conexión");
     }
 
@@ -52,14 +46,19 @@ export default function Contact() {
   };
 
   return (
-    <section id="contacto" className="bg-gray-950 text-white py-24 px-8">
-      <h2 className="text-4xl font-bold text-center text-pink-500 mb-16 drop-shadow-[0_0_15px_#ff00ff]">
-        Dejanos tu Consulta
+    <section
+      id="contacto"
+      className="bg-[#0b0b0b] text-[#f3e7d3] py-24 px-6"
+    >
+      {/* TITLE */}
+      <h2 className="text-4xl font-semibold text-center mb-14 tracking-wide">
+        Dejanos tu opnion para mejorar cada dia
       </h2>
 
+      {/* FORM */}
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl mx-auto flex flex-col gap-6"
+        className="max-w-xl mx-auto flex flex-col gap-5"
       >
         <input
           type="text"
@@ -69,7 +68,15 @@ export default function Contact() {
             setForm({ ...form, name: e.target.value })
           }
           required
-          className="p-4 bg-black border border-cyan-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          className="
+            p-4 rounded-lg
+            bg-[#141414]
+            border border-white/10
+            text-[#f3e7d3]
+            placeholder:text-[#f3e7d3]/40
+            focus:outline-none
+            focus:ring-2 focus:ring-[#c89b6a]
+          "
         />
 
         <input
@@ -80,36 +87,62 @@ export default function Contact() {
             setForm({ ...form, email: e.target.value })
           }
           required
-          className="p-4 bg-black border border-cyan-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          className="
+            p-4 rounded-lg
+            bg-[#141414]
+            border border-white/10
+            text-[#f3e7d3]
+            placeholder:text-[#f3e7d3]/40
+            focus:outline-none
+            focus:ring-2 focus:ring-[#c89b6a]
+          "
         />
 
         <textarea
-          placeholder="Contanos tu evento"
+          placeholder="Tu mensaje"
           rows={4}
           value={form.message}
           onChange={(e) =>
             setForm({ ...form, message: e.target.value })
           }
           required
-          className="p-4 bg-black border border-cyan-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+          className="
+            p-4 rounded-lg
+            bg-[#141414]
+            border border-white/10
+            text-[#f3e7d3]
+            placeholder:text-[#f3e7d3]/40
+            focus:outline-none
+            focus:ring-2 focus:ring-[#c89b6a]
+          "
         />
 
+        {/* BUTTON */}
         <button
           type="submit"
           disabled={loading}
-          className="py-4 border border-pink-500 rounded-full text-pink-500 hover:bg-pink-500 hover:text-black transition shadow-[0_0_15px_#ff00ff] disabled:opacity-50"
+          className="
+            py-4 rounded-full
+            border border-[#25D366]
+            text-[#25D366]
+            transition
+            hover:bg-[#25D366]
+            hover:text-black
+            disabled:opacity-50
+          "
         >
           {loading ? "Enviando..." : "Enviar consulta"}
         </button>
 
+        {/* MESSAGE */}
         <AnimatePresence>
           {success && (
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="text-center text-sm text-cyan-400"
+              transition={{ duration: 0.3 }}
+              className="text-center text-sm text-[#c89b6a]"
             >
               {success}
             </motion.p>

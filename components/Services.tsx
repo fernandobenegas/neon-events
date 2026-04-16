@@ -2,103 +2,132 @@
 
 import { motion } from "framer-motion";
 import SectionWrapper from "./SectionWrapper";
-import { Sparkles, ImageIcon, Building2 } from "lucide-react";
 
-const services = [
+const phoneNumber = "543412167147"; // 👈 tu número con código país
+
+
+const handleWhatsApp = (productName: string) => {
+  const message = `Hola! 👋\nQuiero hacer un pedido de: ${productName}\n¿Me pasas disponibilidad?`;
+  const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(url, "_blank");
+};
+
+const products = [
+
   {
-    title: "Neón personalizado",
-    description:
-      "Diseñamos y fabricamos carteles LED totalmente personalizados para bodas, cumpleaños y eventos sociales. Adaptamos cada pieza a tu identidad visual.",
-    icon: Sparkles,
-    glow: "shadow-[0_0_25px_#ff00ff40]",
-    border: "border-pink-500/40",
-    hoverGlow: "hover:shadow-[0_0_40px_#ff00ff]",
+    title: "Medialunas rellenas con dulce de leche",
+    description: "Horneadas diariamente, textura suave y sabor tradicional 1/2 docena: $3500 | 1 docena: $6500",
+    image: "/dulceDeLeche.jpeg",
   },
   {
-    title: "Espejos Infinitos",
-    description:
-      "Efectos visuales impactantes con espejos infinitos LED que generan profundidad y elegancia. Perfectos para ambientaciones modernas y premium.",
-    icon: ImageIcon,
-    glow: "shadow-[0_0_25px_#00ffff40]",
-    border: "border-cyan-500/40",
-    hoverGlow: "hover:shadow-[0_0_40px_#00ffff]",
+    title: "Medialunas Rellenas con Jamón & Queso",
+    description: "Horneadas diariamente, textura suave y sabor tradicional 1/2 docena: $3500 | 1 docena: $6500",
+    image: "/jamonYqueso.jpeg",
   },
   {
-    title: "Eventos corporativos",
-    description:
-      "Instalaciones profesionales para lanzamientos, activaciones y exposiciones empresariales. Iluminación estratégica para posicionar tu marca.",
-    icon: Building2,
-    glow: "shadow-[0_0_25px_#a855f740]",
-    border: "border-purple-500/40",
-    hoverGlow: "hover:shadow-[0_0_40px_#a855f7]",
+    title: "Medialunas Saladas",
+    description: "Horneadas diariamente, textura suave y sabor tradicional. 1/2 docena: $2500 | 1 docena: $5000",
+    image: "/comunes.jpeg",
   },
+  
+  {
+    title: "Bizcochos",
+    description: "Crujientes, livianos y perfectos para el mate. 1/2 docena: $2500 | 1 docena: $5000",
+    image: "/biscochos.jpeg",
+  },
+  
 ];
 
 const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.12,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 25 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-export default function Services() {
+export default function Products() {
   return (
     <SectionWrapper>
-      <section
-        id="servicios"
-        className="py-24 px-8 bg-black text-white"
-      >
-        <h2 className="text-4xl font-bold text-center text-pink-500 mb-16 drop-shadow-[0_0_15px_#ff00ff]">
-          Nuestros Servicios
+      <section className="py-24 px-6 bg-[#0b0b0b] text-[#f3e7d3]">
+
+        {/* TITLE */}
+        <h2 className="text-4xl font-italict text-center mb-14 tracking-wide">
+          Nuestros Productos
         </h2>
 
+        {/* GRID */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto"
+          className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"
         >
-          {services.map((service, i) => {
-            const Icon = service.icon;
+          {products.map((product, i) => (
+            <motion.div
+              key={i}
+              variants={cardVariants}
+              className="
+                bg-[#141414]
+                border border-white/10
+                rounded-2xl
+                overflow-hidden
+                shadow-[0_10px_30px_rgba(0,0,0,0.6)]
+                transition duration-300
+                hover:-translate-y-2
+                hover:shadow-[0_15px_40px_rgba(0,0,0,0.75)]
+              "
+            >
+              {/* IMAGE */}
+              <div className="h-52 w-full overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="
+                    w-full h-full object-cover
+                    transition duration-500
+                    hover:scale-105
+                  "
+                />
+              </div>
 
-            return (
-              <motion.div
-                key={i}
-                variants={cardVariants}
-                className={`p-10 bg-black rounded-2xl border ${service.border} ${service.glow} ${service.hoverGlow} transition duration-500 hover:-translate-y-2`}
-              >
-                <div className="mb-6">
-                  <Icon
-                    size={40}
-                    className="text-white drop-shadow-[0_0_10px_currentColor]"
-                  />
-                </div>
+              {/* CONTENT */}
+              <div className="p-6">
 
-                <h3 className="text-2xl font-semibold mb-4 text-white">
-                  {service.title}
+                <h3 className="text-xl font-semibold mb-2 text-[#f3e7d3]">
+                  {product.title}
                 </h3>
 
-                <p className="text-gray-400 leading-relaxed mb-6">
-                  {service.description}
+                <p className="text-[#f3e7d3]/60 text-sm leading-relaxed mb-6">
+                  {product.description}
                 </p>
 
-                <a
-                  href="#contacto"
-                  className="inline-block px-6 py-2 text-sm border border-white/30 rounded-full hover:bg-white hover:text-black transition"
-                >
-                  Solicitar información →
-                </a>
-              </motion.div>
-            );
-          })}
+                <button
+  onClick={() => handleWhatsApp(product.title)}
+  className="
+    inline-block px-5 py-2 text-sm
+    border border-[#25D366]/50
+    text-[#white]
+    rounded-full
+    hover:bg-[#25D366]
+    hover:text-black
+    transition
+  "
+>
+  Hablar por WhatsApp →
+</button>
+
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </section>
     </SectionWrapper>

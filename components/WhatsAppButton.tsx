@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function WhatsAppButton() {
   const phone = "5493412167147"; // ← PONÉ TU NÚMERO REAL
-  const message = "Hola! Quiero presupuesto para un cartel de neón.";
+  const message = "Hola! Quiero Informacion y precios de los productos.";
 
   return (
     <a
